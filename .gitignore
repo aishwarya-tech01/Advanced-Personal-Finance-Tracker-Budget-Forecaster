@@ -1,0 +1,12 @@
+# Ignore dependencies
+node_modules/
+/backend/node_modules/
+/frontend/node_modules/
+
+# Ignore sensitive database passwords
+.env
+/backend/.env
+
+# Ignore system files
+.DS_Store
+Thumbs.db
