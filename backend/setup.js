@@ -8,14 +8,7 @@ const rl = readline.createInterface({
 
 console.log("🛠️ Automated .env Generator");
 rl.question('Enter your PostgreSQL password: ', (password) => {
-    const envContent = `PORT=5000
-DB_USER=postgres
-DB_PASSWORD=${password.trim()}
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=finance_tracker
-`;
-
+    const envContent = `PORT=5000\nDB_USER=postgres\nDB_PASSWORD=${password.trim()}\nDB_HOST=localhost\nDB_PORT=5432\nDB_NAME=finance_tracker\n`;
     fs.writeFileSync('.env', envContent);
     console.log('✅ Success! Your .env file has been created automatically.');
     rl.close();
