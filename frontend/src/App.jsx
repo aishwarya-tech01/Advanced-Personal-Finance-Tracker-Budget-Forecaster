@@ -3,7 +3,7 @@ import Dashboard from './components/Dashboard';
 import './index.css';
 
 // We will paste your pgAdmin Demo User UUID here when testing!
-const USER_ID = "YOUR-UUID-GOES-HERE"; 
+const USER_ID = "4d20b032-08d8-4ff7-bdfb-2549267ad601;"; 
 
 function App() {
   return (

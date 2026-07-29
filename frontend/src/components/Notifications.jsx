@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Notifications = ({ userId, refresh }) => {
-  const [alerts, setAlerts] = useState([]);
-
-  useEffect(() => {
-    if(!userId || userId === "YOUR-UUID-GOES-HERE") return;
-    fetch(`http://localhost:5000/api/notifications/${userId}`)
-      .then(res => res.json())
-      .then(data => setAlerts(data))
-      .catch(err => console.error(err));
-  }, [userId, refresh]);
-
-  if (alerts.length === 0) return <p>All good! No anomalies detected.</p>;
-
+const Notifications = ({ alerts = [] }) => {
   return (
     <div>
-      {alerts.map(alert => (
-        <div key={alert.id} className="alert-box">
-          ⚠️ {alert.message}
-        </div>
-      ))}
+      {alerts.length === 0 ? (
+        <p className="text-gray-500 italic">No high-spending alerts triggered yet</p>
+      ) : (
+        <ul className="space-y-2">
+          {alerts.map((alert, index) => (
+            <li key={alert.id || index} className="p-3 bg-red-50 text-red-700 rounded border">
+              {alert.message}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
